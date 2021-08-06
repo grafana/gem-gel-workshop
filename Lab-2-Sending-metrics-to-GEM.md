@@ -28,7 +28,7 @@ The agent is also extremely configurable. The examples given in this guide will 
 
 From the [Grafana Agent releases page](https://github.com/grafana/agent/releases), download the relevant binary for your operating system.
 
-### UNIX-based steps (Linux, Mac)
+### **UNIX-based steps (Linux, Mac)**
 
 Extract the binary:
 
@@ -53,7 +53,6 @@ prometheus:
         basic_auth:
           username: <my-gem-instance-tenant-name>
           password: <my-gem-api-token>
-
 integrations:
   agent:
     enabled: true
@@ -63,9 +62,8 @@ integrations:
 ####
 This is an extremely basic configuration that does the following things:
 
-- Sets a standard logging level
 - Sets a port for the agent (12345 is not mandated, it can be anything you want)
-- Sets a temporary directory for the Promeheus write-ahead log
+- Sets a temporary directory for the Prometheus write-ahead log
 - Sets a default scrape interval for metrics
 - Sets the endpoint URL and credentials for writing metrics
 - Enables the `agent` and `node_exporter` Agent integrations, this automatically configures and enables various metrics to be sent from your system, it is similar to manually configuring a Prometheus `node_exporter` to be scraped, but without the extra hassle. You can read more about Agent integration settings [here](https://grafana.com/docs/agent/latest/configuration/integrations/)
@@ -78,5 +76,47 @@ You should see lots of logs fly by. If you see any obvious errors, let your lab 
 
 If not, move on to the verifying step (skip the Windows step).
 
-### Windows-based steps
+### **Windows-based steps**
+
+After downloading the [Windows binary of the Grafana Agent](https://github.com/grafana/agent/releases/download/v0.18.0/agent-windows-amd64.exe.zip) - unzip it.
+
+Next, run the executable to install it.
+
+The installer by default installs the agent into `C:\Program Files\Grafana Agent` and also adds it as a Windows service.
+
+Next, edit the default configuration file found at `C:\Program Files\Grafana Agent\agent-config.yaml`
+
+It should, by default contain everything you need to grab Windows metrics, except that it doesn't have the necessary block to send the data anywhere. Edit the file to look like this instead:
+
+```
+server:
+  http_listen_port: 12345
+prometheus:
+  wal_directory: $APPDATA\grafana-agent-wal
+  global:
+    scrape_interval: 15s
+    remote_write:
+      - url: https://<gem-url-provided-by-lab-lead>/api/v1/push
+        basic_auth:
+          username: <my-gem-instance-tenant-name>
+          password: <my-gem-api-token>
+  configs:
+    - name: integrations
+integrations:
+  windows_exporter:
+    enabled: true
+```
+
+**Note:** If you happened to examine both the non-Windows and Windows config files, you might have noticed that they are almost entirely identical, except that:
+- `node_exporter` is traded for `windows_exporter`
+- The `wal_directory` uses a Windows-style path variable
+
+It's helpful to have similar experiences across operating systems!
+
+Once you have edited the `agent-config.yaml` in Windows, restart the Grafana Agent service for the changes to take effect.
+
+Check the logs for the service to ensure you don't see any obvious errors - if you do, let your lab lead know.
+
+---
+## Verifying your metrics have made it to the Grafana Enterprise Metrics cluster
 

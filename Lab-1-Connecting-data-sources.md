@@ -26,6 +26,7 @@ You should see a relatively low number of existing data sources, unless you've p
 ## Connecting to the Grafana Enterprise Metrics (GEM) cluster
 
 Firstly, we'll be adding the data source that will connect to your instance/tenant in the shared Grafana Enterprise Metrics cluster.
+
 Click `Add data source`.
 
 Select `Prometheus` as the data source type. Grafana Enterprise Metrics instances/tenants behave just like Prometheus from Grafana's perspective, so there is no special data source type needed.
