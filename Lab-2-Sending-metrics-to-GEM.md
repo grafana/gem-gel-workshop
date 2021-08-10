@@ -120,3 +120,34 @@ Check the logs for the service to ensure you don't see any obvious errors - if y
 ---
 ## Verifying your metrics have made it to the Grafana Enterprise Metrics cluster
 
+For this step, you'll be importing one of two dashboards depending on whether you configured the Grafana Agent on a UNIX-based machine (Mac, Linux) or a Windows machine.
+
+### **Importing a dashboard for Linux/Mac**
+
+In your Grafana instance, hover over the `+` icon in the left-hand navigation menu.
+
+Click `Import`.
+
+In the `Import via grafana.com` field, enter a number depending on what operating system the machine you configured the Grafana Agent on your machine used.
+
+- For Mac/Linux: Enter `10242`
+
+- For Windows: Enter `14694`
+
+- Click `Load`
+
+- Rename the dashboard if you would like and set a folder
+
+- In the `Prometheus` data source dropdown, select the datasource you added in `Lab 1` e.g. `GEM-Workshop`
+
+- Click `Import`
+
+You should be presented with your newly imported dashboard showing metrics from your machine.
+
+These metrics are being sent via the Grafana Agent, to your instance/tenant in a shared, distributed Grafana Enterprise Metrics cluster running in microservices mode on Kubernetes and read back out via Grafana!
+
+**To reiterate:** All of this can be done on-premise in your company's own infrastructure, or your company's public cloud capacity - we are using Grafana Cloud's hosted Grafana offering purely for convenience here.
+
+This concludes Lab 2!
+
+Great job :)
