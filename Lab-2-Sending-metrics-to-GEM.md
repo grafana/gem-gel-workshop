@@ -103,9 +103,18 @@ prometheus:
   configs:
     - name: integrations
 integrations:
+  agent:
+    enabled: true
   windows_exporter:
     enabled: true
 ```
+This is an extremely basic configuration that does the following things:
+
+- Sets a port for the agent (12345 is not mandated, it can be anything you want)
+- Sets a temporary directory for the Prometheus write-ahead log
+- Sets a default scrape interval for metrics
+- Sets the endpoint URL and credentials for writing metrics
+- Enables the `agent` and `windows_exporter` Agent integrations, this automatically configures and enables various metrics to be sent from your system, it is similar to manually configuring a Prometheus `windows_exporter` to be scraped, but without the extra hassle. You can read more about Agent integration settings [here](https://grafana.com/docs/agent/latest/configuration/integrations/)
 
 **Note:** If you happened to examine both the non-Windows and Windows config files, you might have noticed that they are almost entirely identical, except that:
 - `node_exporter` is traded for `windows_exporter`
@@ -133,8 +142,6 @@ You should now see a ton of metrics and labels - if so, then everything is good!
 ## Visualizing your metrics on a Grafana Dashboard
 
 For this step, you'll be importing one of two dashboards depending on whether you configured the Grafana Agent on a UNIX-based machine (Mac, Linux) or a Windows machine.
-
-### **Importing a dashboard for Linux/Mac**
 
 In your Grafana instance, hover over the `+` icon in the left-hand navigation menu.
 
