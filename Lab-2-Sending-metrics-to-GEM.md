@@ -120,6 +120,18 @@ Check the logs for the service to ensure you don't see any obvious errors - if y
 ---
 ## Verifying your metrics have made it to the Grafana Enterprise Metrics cluster
 
+Click the `Explore` icon in the left navigation menu - it looks like a compass.
+
+At the top of the page, open the dropdown to change the selected data source.
+
+Select your data source e.g. `GEM-Workshop` or whatever you named it.
+
+Note that instead of `(No metrics found)` you should now see the words `Metrics browser`, click that.
+
+You should now see a ton of metrics and labels - if so, then everything is good!
+
+## Visualizing your metrics on a Grafana Dashboard
+
 For this step, you'll be importing one of two dashboards depending on whether you configured the Grafana Agent on a UNIX-based machine (Mac, Linux) or a Windows machine.
 
 ### **Importing a dashboard for Linux/Mac**
