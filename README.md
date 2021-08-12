@@ -1,6 +1,6 @@
 # Scaling Prometheus and Loki with Grafana Enterprise Metrics and Grafana Enterprise Logs - Workshop by Grafana Labs
 
-This repository contains the hands-on / lab exercise instructions for the Grafana Labs workshop on Scaling Prometheus on Loki with Grafana Enterprise Metrics and Grafana Enterprise Logs.
+This repository contains the hands-on / lab exercise instructions for the Grafana Labs workshop on Scaling Prometheus and Loki with Grafana Enterprise Metrics and Grafana Enterprise Logs.
 
 The instructions assume you are attending an instance of that workshop and a Grafana Labs employee has prepped the GEM and GEL environment for you. If not, these steps will **very likely not work** on their own.
 
