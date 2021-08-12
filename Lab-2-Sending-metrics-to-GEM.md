@@ -28,6 +28,10 @@ The agent is also extremely configurable. The examples given in this guide will 
 
 From the [Grafana Agent releases page](https://github.com/grafana/agent/releases), download the relevant binary for your operating system.
 
+**Mac Users:** Choose the `darwin` release.
+
+If you have a newer M1 Mac, you will want the `arm64` version. If not, then the `amd64` version.
+
 ### **UNIX-based steps (Linux, Mac)**
 
 Extract the binary:
@@ -71,6 +75,8 @@ This is an extremely basic configuration that does the following things:
 Next, start the Grafana Agent (use the correct binary name for your system):
 
 `./agent-linux-amd64 -config.file agent-config.yaml`
+
+**Mac Users:** If you are prevented from running the Grafana Agent because there is no developer signature, you will need to go to System Preferences -> Security & Privacy and then allow your Mac to run it.
 
 You should see lots of logs fly by. If you see any obvious errors, let your lab lead know.
 
