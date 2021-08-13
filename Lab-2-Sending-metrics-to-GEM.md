@@ -155,7 +155,9 @@ Click `Import`.
 
 In the `Import via grafana.com` field, enter a number depending on what operating system the machine you configured the Grafana Agent on your machine used.
 
-- For Mac/Linux: Enter `10242`
+- For Linux: Enter `10242`
+
+- For Mac: Enter `14866`
 
 - For Windows: Enter `14694`
 
