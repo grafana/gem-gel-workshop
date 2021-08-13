@@ -98,10 +98,10 @@ prometheus:
   configs:
     - name: integrations
 loki:
+  # This directory needs to already exist 
   positions_directory: "C:\\path\\to\\directory"
   configs:
   - name: windows
-  # This directory needs to already exist
     scrape_configs:
       - job_name: windows
         windows_events:
