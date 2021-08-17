@@ -138,7 +138,13 @@ This short enhancement to your existing configuration does the following things:
 
 Once you have edited the `agent-config.yaml` in Windows, restart the Grafana Agent service for the changes to take effect.
 
+**Note:** You will need to run the Grafana Agent as Administrator for it to have easy permission to access your system logs. If you aren't comfortable with this, that's totally fine, feel free to skip the step.
+
 Check the logs for the service to ensure you don't see any obvious errors - if you do, let your lab lead know.
+
+As the particular Windows log being tailed may not be very chatty, it might be good to force at least one event to the log. You can do this with the following command:
+
+`eventcreate /T ERROR /ID 500 /L APPLICATION /D "hello yes this is a forced log event"`
 
 ---
 ## Verifying your logs have made it to the Grafana Enterprise Logs cluster
