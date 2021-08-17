@@ -63,8 +63,23 @@ integrations:
   node_exporter:
     enabled: true
 ```
+
+**Mac Users:** If you want your filesystem metrics to work, you'll need to add two extra lines to the very end of the file, like so:
+
+```
+integrations:
+  agent:
+    enabled: true
+  node_exporter:
+    enabled: true
+    filesystem_ignored_mount_points: "^/(dev)($|/)"
+    filesystem_ignored_fs_types: "^devfs$"
+```
+
+This is because of a bug in the Grafana Agent that has since been fixed, but not yet released.
+
 ####
-This is an extremely basic configuration that does the following things:
+So, overall this is an extremely basic configuration that does the following things:
 
 - Sets a port for the agent (12345 is not mandated, it can be anything you want)
 - Sets a temporary directory for the Prometheus write-ahead log
