@@ -99,7 +99,7 @@ If not, move on to the verifying step (skip the Windows step).
 
 ### **Windows-based steps**
 
-After downloading the [Windows binary of the Grafana Agent](https://github.com/grafana/agent/releases/download/v0.18.0/agent-windows-amd64.exe.zip) - unzip it.
+Download the [Windows installer of the Grafana Agent](https://github.com/grafana/agent/releases/download/v0.18.2/grafana-agent-installer.exe).
 
 Next, run the executable to install it.
 
